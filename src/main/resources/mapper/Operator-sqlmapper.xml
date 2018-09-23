@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bdt.dao.OperatorDAO"><sql id="fullColumns">
+operator_no,
+password,
+status,
+name,
+telephone,
+remark
+</sql><sql id="fullWhere"><where><if test="operator_no != null">
+ AND operator_no = #{operator_no}
+</if><if test="password != null">
+ AND password = #{password}
+</if><if test="status != null">
+ AND status = #{status}
+</if><if test="name != null">
+ AND name = #{name}
+</if><if test="telephone != null">
+ AND telephone = #{telephone}
+</if><if test="remark != null">
+ AND remark = #{remark}
+</if></where></sql><insert id="save">
+insert into operator (
+<include refid="fullColumns"/>
+)values(
+#{operator_no},
+#{password},
+#{status},
+#{name},
+#{telephone},
+#{remark}
+)
+</insert><update id="update">
+update operator set 
+operator_no=#{operator_no},
+password=#{password},
+status=#{status},
+name=#{name},
+telephone=#{telephone},
+remark=#{remark}
+where
+operator_no = #{operator_no}
+</update><delete id="delete">
+delete from operator
+where
+operator_no = #{operator_no}
+</delete><select id="get">select<include refid="fullColumns"/>
+from operator
+where
+operator_no = #{operator_no}
+</select>
+ <select id="query">select<include refid="fullColumns"/>from operator<include refid="fullWhere"/>
+ </select>
+</mapper>

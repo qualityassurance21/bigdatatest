@@ -1,0 +1,1 @@
+package com.bdt.service;import com.bdt.entity.Operator;public interface OperatorService extends ServiceBase<Operator, Long> {    }

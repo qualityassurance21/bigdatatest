@@ -1,0 +1,1 @@
+package com.bdt.dao;import com.bdt.dao.DAOBase;import com.bdt.entity.Operator;public interface OperatorDAO extends DAOBase<Operator, Long> {}
