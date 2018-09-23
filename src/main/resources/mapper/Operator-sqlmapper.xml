@@ -51,4 +51,9 @@ operator_no = #{operator_no}
 </select>
  <select id="query">select<include refid="fullColumns"/>from operator<include refid="fullWhere"/>
  </select>
+ <select id="queryAll" resultType="com.bdt.entity.Operator">
+  select
+  <include refid="fullColumns" />
+  from operator
+ </select>
 </mapper>

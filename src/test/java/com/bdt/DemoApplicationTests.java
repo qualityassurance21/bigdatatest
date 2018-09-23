@@ -1,4 +1,4 @@
-package com.bdt.demo;
+package com.bdt;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
