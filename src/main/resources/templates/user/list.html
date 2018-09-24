@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+
+    <!--<link rel="stylesheet" type="text/css" media="all"-->
+          <!--href="../static/style.css"  th:href="@{../static/style.css}"/>-->
+    <style type="text/css">
+        ul{font-style:italic;}
+    </style>
+</head>
+<body>
+<h2>用户列表</h2>
+<div>
+    <ul>
+        <li  th:each="user:${users}">
+            <span th:text="${user.id}"></span>-
+            <span th:text="${user.name}"></span>-
+            <span th:text="${user.age}"></span>-
+            <span th:text="${user.address}"></span>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

@@ -2,10 +2,12 @@ package com.bdt.controller;
 
 import com.bdt.entity.Operator;
 import com.bdt.form.BaseBackList;
+import com.bdt.form.ErrorMesBase;
 import com.bdt.service.OperatorService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
@@ -16,7 +18,7 @@ import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
-
+import com.bdt.aspect.logAspect;
 import javax.annotation.Resource;
 
 import static springfox.documentation.builders.PathSelectors.regex;
@@ -31,6 +33,8 @@ public class OperatorController {
 
 	@Resource
 	public OperatorService operatorService;
+
+	logAspect la = new logAspect();
 	
 	@Bean
 	public Docket demoApi() {
@@ -63,17 +67,20 @@ public class OperatorController {
 		return backList;
 	}
 
-//	@ApiOperation(value = "以基金名字查询")
-//	@ResponseBody
-//	@RequestMapping(value = "/func_queryFund", method = RequestMethod.POST)
-//	public BaseBackList queryByFund(@RequestParam(value = "基金", required = true) String fund){
-//		BaseBackList baseBackList = new BaseBackList();
-//		baseBackList.setList(operatorService.queryByFundName(fund));
-//		baseBackList.setSuccess();
-//		baseBackList.setTotal_sum((operatorService.queryByFundName(fund)).size());
-//		logger.info("执行func_queryFund");
-//		return baseBackList;
-//	}
+	@ResponseBody
+	@RequestMapping(value="/operatorLogin", method = RequestMethod.POST)
+	public ErrorMesBase operatorLogin(@RequestParam(value="operatorNo") int operatorNo, @RequestParam(value="password") int password) {
+		ErrorMesBase errorList = new ErrorMesBase();
+		System.out.println("账户"+operatorNo+"密码："+password+"响应"+operatorService.operatorLogin(operatorNo,password));
+		if(operatorService.operatorLogin(operatorNo, password) == 1){
+			errorList.setSuccess();
+		}
+		else {
+			errorList.setError_msg("登录失败");
+		}
+		return errorList;
+	}
+
 
 
 }

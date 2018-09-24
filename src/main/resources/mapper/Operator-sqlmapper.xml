@@ -56,4 +56,9 @@ operator_no = #{operator_no}
   <include refid="fullColumns" />
   from operator
  </select>
+<select id="operatorLogin" resultType="Integer">
+        select count(1) from operator where operator_no = #{arg0} and password = #{arg1}
+</select>
+
+
 </mapper>

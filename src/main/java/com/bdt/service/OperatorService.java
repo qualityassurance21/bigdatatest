@@ -1,1 +1,1 @@
-package com.bdt.service;import com.bdt.entity.Operator;public interface OperatorService extends ServiceBase<Operator, Long> {    }
+package com.bdt.service;import com.bdt.entity.Operator;public interface OperatorService extends ServiceBase<Operator, Long> {    public int operatorLogin(int operator_no, int password);}

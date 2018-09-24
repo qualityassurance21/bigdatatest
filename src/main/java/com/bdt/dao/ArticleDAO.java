@@ -1,0 +1,1 @@
+package com.bdt.dao;import com.bdt.dao.DAOBase;import com.bdt.entity.Article;import java.util.List;public interface ArticleDAO extends DAOBase<Article, Long> {    public List<Article> blurSearch(String article);    public List<Article> searchByPage(int n);}

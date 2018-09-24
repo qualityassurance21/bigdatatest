@@ -1,0 +1,1 @@
+package com.bdt.service;import java.util.List;import java.util.Map;import com.bdt.entity.Article;public interface ArticleService extends ServiceBase<Article, Long> {    public List<Article> blurSearch(String article);    public List<Article> searchByPage(int n);}
